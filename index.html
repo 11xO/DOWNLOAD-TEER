@@ -2,14 +2,12 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<!-- ✅ كلمات البحث لصفحة جوجل -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
 <title>تحميل مشوارك | تطبيق مشوارك Meshwark - أسرع توصيل</title>
 <meta name="description" content="تحميل تطبيق مشوارك Meshwark الآن مجاناً. أسرع خدمة توصيل في منطقتك للأندرويد والأيفون. حمّل مشوارك واستمتع بمكافآت ونقاط.">
 <meta name="keywords" content="مشوارك, تحميل مشوارك, تطبيق مشوارك, Meshwark, تحميل Meshwark, مشوارك اندرويد, مشوارك ايفون, توصيل, دليفري">
 <meta name="author" content="Meshwark">
 
-<!-- ✅ Open Graph (لما حد يشارك الرابط على السوشيال ميديا) -->
 <meta property="og:title" content="تحميل مشوارك | تطبيق مشوارك Meshwark">
 <meta property="og:description" content="حمّل تطبيق مشوارك Meshwark الآن مجاناً. أسرع خدمة توصيل في منطقتك.">
 <meta property="og:image" content="https://11xo.github.io/Meshwark/logo.png">
@@ -147,31 +145,19 @@ body{
     box-shadow:0 10px 20px rgba(16,185,129,.4);
 }
 
-.screenshots-section{
-    padding:60px 20px 40px;
-    position:relative;z-index:1;
-}
+.screenshots-section{padding:60px 20px 40px;position:relative;z-index:1;}
 .screenshots-title{
-    font-size:clamp(1.8rem,4vw,2.5rem);
-    font-weight:900;text-align:center;
-    margin-bottom:12px;
+    font-size:clamp(1.8rem,4vw,2.5rem);font-weight:900;text-align:center;margin-bottom:12px;
     background:linear-gradient(90deg,#8b5cf6,#06b6d4);
-    -webkit-background-clip:text;background-clip:text;
-    color:transparent;
+    -webkit-background-clip:text;background-clip:text;color:transparent;
 }
 .screenshots-sub{
-    text-align:center;color:var(--text-muted);
-    font-size:1rem;margin-bottom:40px;
-    max-width:500px;margin-left:auto;margin-right:auto;
-    line-height:1.7;
+    text-align:center;color:var(--text-muted);font-size:1rem;margin-bottom:40px;
+    max-width:500px;margin-left:auto;margin-right:auto;line-height:1.7;
 }
 .screenshots-slider{
-    display:flex;gap:20px;
-    overflow-x:auto;
-    padding:20px 10px 30px;
-    scroll-snap-type:x mandatory;
-    scrollbar-width:thin;
-    scrollbar-color:#8b5cf6 transparent;
+    display:flex;gap:20px;overflow-x:auto;padding:20px 10px 30px;
+    scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:#8b5cf6 transparent;
     max-width:100%;
 }
 .screenshots-slider::-webkit-scrollbar{height:8px}
@@ -277,7 +263,6 @@ body{
 </head>
 <body>
 
-<!-- Loader -->
 <div class="loader-overlay" id="loaderOverlay">
     <div class="loader-logo">
         <img src="../logo.png" alt="مشوارك">
@@ -289,7 +274,6 @@ body{
 
 <div class="main-container">
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="logo-wrap reveal">
             <img src="../logo.png" alt="تحميل مشوارك Meshwark">
@@ -300,21 +284,25 @@ body{
         </p>
 
         <div class="download-buttons reveal">
-            <a href="meshwark.zip" download class="dl-btn dl-btn-android">
+            <!-- ✅ زر الأندرويد — الملف بيتحدد من اللوحة -->
+            <a href="meshwark.zip" download class="dl-btn dl-btn-android" id="btnAndroid">
                 <i class="fab fa-android dl-btn-icon"></i>
                 <div class="dl-btn-text">
                     <small>حمّل الآن</small>
                     <strong>تطبيق الأندرويد</strong>
                 </div>
             </a>
-            <a href="javascript:void(0)" onclick="showToast('📱 تطبيق الأيفون قريباً — تابعنا على فيسبوك')" class="dl-btn dl-btn-ios">
+
+            <!-- ✅ زر الأيفون — الملف بيتحدد من اللوحة -->
+            <a href="meshwark-ios.zip" download class="dl-btn dl-btn-ios" id="btnIOS">
                 <i class="fab fa-apple dl-btn-icon"></i>
                 <div class="dl-btn-text">
                     <small>حمّل الآن</small>
                     <strong>تطبيق الأيفون</strong>
                 </div>
             </a>
-            <a href="https://11xo.github.io/Meshwark/" target="_blank" class="dl-btn dl-btn-open">
+
+            <a href="https://11xo.github.io/Meshwark/" target="_blank" class="dl-btn dl-btn-open" id="btnOpen">
                 <i class="fas fa-external-link-alt dl-btn-icon"></i>
                 <div class="dl-btn-text">
                     <small>افتح مباشرة</small>
@@ -331,7 +319,7 @@ body{
                     <strong>واتساب</strong>
                 </div>
             </a>
-            <a href="#" id="btnFacebook" target="_blank" class="dl-btn dl-btn-facebook">
+            <a href="#" id="btnFacebook" target="_blank" class="dl-btn dl-btn-facebook" style="display:none">
                 <i class="fab fa-facebook-f dl-btn-icon"></i>
                 <div class="dl-btn-text">
                     <small>تابعنا</small>
@@ -353,24 +341,20 @@ body{
         </div>
     </section>
 
-    <!-- لقطات من داخل التطبيق -->
     <section class="screenshots-section">
         <h2 class="screenshots-title reveal">لقطات من داخل التطبيق</h2>
         <p class="screenshots-sub reveal">شوف شكل التطبيق من جوه — تجربة سهلة وسريعة</p>
 
-        <div class="screenshots-slider reveal" id="screenshotsSlider">
-            <!-- الصور هتتولد تلقائياً -->
-        </div>
+        <div class="screenshots-slider reveal" id="screenshotsSlider"></div>
         <div class="screenshot-dots" id="screenshotDots"></div>
     </section>
 
 </div>
 
-<!-- Footer -->
 <footer class="footer">
     <div class="footer-social">
-        <a href="https://wa.me/201115699940" class="wa" target="_blank" title="واتساب"><i class="fab fa-whatsapp"></i></a>
-        <a href="#" id="footFacebook" class="fb" target="_blank" title="فيسبوك"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://wa.me/201115699940" class="wa" id="footWhatsapp" target="_blank" title="واتساب"><i class="fab fa-whatsapp"></i></a>
+        <a href="#" id="footFacebook" class="fb" target="_blank" title="فيسبوك" style="display:none"><i class="fab fa-facebook-f"></i></a>
         <a href="https://11xo.github.io/Meshwark/" class="app" target="_blank" title="افتح التطبيق"><i class="fas fa-mobile-alt"></i></a>
     </div>
     <div>© <span id="year"></span> مشوارك — كل الحقوق محفوظة</div>
@@ -378,59 +362,40 @@ body{
 
 <div class="toast" id="toast"><i class="fas fa-info-circle"></i><span id="toastMessage">رسالة</span></div>
 
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
-<script>
-const firebaseConfig = {
-    apiKey: "AIzaSyAR98tJfqxO0_LZT7GRn-peOqQB1PgP6D4",
-    authDomain: "family-4ff2a.firebaseapp.com",
-    databaseURL: "https://family-4ff2a-default-rtdb.firebaseio.com",
-    projectId: "family-4ff2a"
-};
-firebase.initializeApp(firebaseConfig);
-const db = firebase.database();
+<!-- ═══════════════════════════════════════════ -->
+<!-- Firebase — defer عشان ما يعطلش الـ DOM -->
+<!-- ═══════════════════════════════════════════ -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js" defer></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js" defer></script>
 
+<script>
 function $id(id){ return document.getElementById(id); }
 
 let toastTimer;
 function showToast(msg, type='info'){
     const t = $id('toast');
+    if(!t) return;
     $id('toastMessage').innerText = msg;
     t.className = 'toast show ' + type;
     const i = t.querySelector('i');
-    i.className = type==='success' ? 'fas fa-check-circle' : type==='error' ? 'fas fa-times-circle' : 'fas fa-info-circle';
+    i.className = type==='success' ? 'fas fa-check-circle'
+                : type==='error' ? 'fas fa-times-circle'
+                : 'fas fa-info-circle';
     clearTimeout(toastTimer);
     toastTimer = setTimeout(()=>t.classList.remove('show'), 3500);
 }
 
-function loadSocialSettings(){
-    db.ref('settings/social').on('value', snap=>{
-        const v = snap.val() || {};
-        const fbUrl = v.facebookUrl || '';
-        const showFb = v.facebookEnabled !== false && /^https?:\/\//.test(fbUrl);
-        
-        const btnFacebook = $id('btnFacebook');
-        const footFacebook = $id('footFacebook');
-        
-        if(btnFacebook){
-            btnFacebook.style.display = showFb ? 'flex' : 'none';
-            if(showFb) btnFacebook.href = fbUrl;
-        }
-        if(footFacebook){
-            footFacebook.style.display = showFb ? 'flex' : 'none';
-            if(showFb) footFacebook.href = fbUrl;
-        }
-    });
-}
-
+/* ═══════════════════════════════════════════
+   Screenshots
+   ═══════════════════════════════════════════ */
 const SCREENSHOTS = [
     { url: '1.png', label: 'الصفحة الرئيسية' },
     { url: '2.png', label: 'السوبر ماركت' },
-    { url: '3.png', label: 'المطاعم' } 
+    { url: '3.png', label: 'المطاعم' }
 ];
 
-function loadScreenshots(){
-    renderScreenshots(SCREENSHOTS);
+function handleImgError(img){
+    img.parentElement.innerHTML = '<div class="screenshot-placeholder"><i class="fas fa-exclamation-triangle"></i><p>الصورة مش محملة</p></div>';
 }
 
 function renderScreenshots(screenshots){
@@ -449,7 +414,7 @@ function renderScreenshots(screenshots){
         html += `
             <div class="screenshot-item">
                 <img src="${s.url}" alt="${s.label || 'لقطة ' + (i+1)}" loading="lazy"
-                     onerror="this.style.display='none';this.parentElement.innerHTML='<div class=screenshot-placeholder><i class=fas\\ fa-exclamation-triangle></i><p>الصورة مش محملة</p></div>';">
+                     onerror="handleImgError(this)">
                 ${s.label ? `<div class="screenshot-label">${s.label}</div>` : ''}
             </div>
         `;
@@ -462,15 +427,19 @@ function renderScreenshots(screenshots){
     });
     dots.innerHTML = dotsHtml;
 
-    slider.addEventListener('scroll', () => {
-        const scrollLeft = slider.scrollLeft;
-        const itemWidth = slider.querySelector('.screenshot-item')?.offsetWidth || 260;
-        const gap = 20;
-        const index = Math.round(scrollLeft / (itemWidth + gap));
-        document.querySelectorAll('.screenshot-dots .dot').forEach((d, i) => {
-            d.classList.toggle('active', i === index);
+    /* ✅ إضافة listener مرة واحدة بس */
+    if(!slider.dataset.listenerAttached){
+        slider.dataset.listenerAttached = '1';
+        slider.addEventListener('scroll', () => {
+            const scrollLeft = slider.scrollLeft;
+            const itemWidth = slider.querySelector('.screenshot-item')?.offsetWidth || 260;
+            const gap = 20;
+            const index = Math.round(scrollLeft / (itemWidth + gap));
+            document.querySelectorAll('.screenshot-dots .dot').forEach((d, i) => {
+                d.classList.toggle('active', i === index);
+            });
         });
-    });
+    }
 }
 
 function scrollToScreenshot(index){
@@ -478,10 +447,16 @@ function scrollToScreenshot(index){
     if(!slider) return;
     const items = slider.querySelectorAll('.screenshot-item');
     if(items[index]){
-        items[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        slider.scrollTo({
+            left: items[index].offsetLeft - slider.offsetWidth/2 + items[index].offsetWidth/2,
+            behavior: 'smooth'
+        });
     }
 }
 
+/* ═══════════════════════════════════════════
+   Particles
+   ═══════════════════════════════════════════ */
 function initParticles(){
     const container = $id('particles');
     if(!container) return;
@@ -503,6 +478,9 @@ function initParticles(){
     }
 }
 
+/* ═══════════════════════════════════════════
+   Reveal on scroll
+   ═══════════════════════════════════════════ */
 function initReveal(){
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -512,20 +490,115 @@ function initReveal(){
             }
         });
     }, { threshold: 0.15 });
-
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 }
 
+/* ═══════════════════════════════════════════
+   ✅ Firebase — قراءة إعدادات صفحة التحميل
+   ═══════════════════════════════════════════ */
+const firebaseConfig = {
+    apiKey: "AIzaSyAR98tJfqxO0_LZT7GRn-peOqQB1PgP6D4",
+    authDomain: "family-4ff2a.firebaseapp.com",
+    databaseURL: "https://family-4ff2a-default-rtdb.firebaseio.com",
+    projectId: "family-4ff2a"
+};
+let db = null;
+
+function applyDownloadSettings(v){
+    v = v || {};
+
+    /* ---------- زر الأندرويد ---------- */
+    const btnAndroid = $id('btnAndroid');
+    if(btnAndroid){
+        if(v.showAndroid === false){
+            btnAndroid.style.display = 'none';
+        } else {
+            btnAndroid.style.display = 'flex';
+            btnAndroid.href = v.androidUrl || 'meshwark.zip';
+            btnAndroid.setAttribute('download', '');
+        }
+    }
+
+    /* ---------- زر الأيفون ---------- */
+    const btnIOS = $id('btnIOS');
+    if(btnIOS){
+        if(v.showIOS === false){
+            btnIOS.style.display = 'none';
+        } else {
+            btnIOS.style.display = 'flex';
+            btnIOS.href = v.iosUrl || 'meshwark-ios.zip';
+            btnIOS.setAttribute('download', '');
+            btnIOS.removeAttribute('onclick');
+        }
+    }
+
+    /* ---------- زر فتح التطبيق ---------- */
+    const btnOpen = $id('btnOpen');
+    if(btnOpen) btnOpen.style.display = (v.showOpenApp === false) ? 'none' : 'flex';
+
+    /* ---------- واتساب ---------- */
+    const waNum = (v.whatsappNumber || '201115699940').replace(/\D/g,'');
+    const btnWa = $id('btnWhatsapp');
+    if(btnWa){
+        if(v.showWhatsapp === false){ btnWa.style.display = 'none'; }
+        else { btnWa.style.display = 'flex'; btnWa.href = 'https://wa.me/' + waNum; }
+    }
+    const footWa = $id('footWhatsapp');
+    if(footWa){
+        if(v.showWhatsapp === false){ footWa.style.display = 'none'; }
+        else footWa.href = 'https://wa.me/' + waNum;
+    }
+
+    /* ---------- فيسبوك ---------- */
+    const fbUrl = (v.facebookUrl || '').trim();
+    const isFbValid = /^https?:\/\//i.test(fbUrl);
+    const btnFb = $id('btnFacebook');
+    if(btnFb){
+        if(v.showFacebook === false || !isFbValid){
+            btnFb.style.display = 'none';
+        } else {
+            btnFb.style.display = 'flex';
+            btnFb.href = fbUrl;
+        }
+    }
+    const footFb = $id('footFacebook');
+    if(footFb){
+        if(v.showFacebook === false || !isFbValid){ footFb.style.display = 'none'; }
+        else footFb.href = fbUrl;
+    }
+}
+
+function initFirebase(){
+    try {
+        firebase.initializeApp(firebaseConfig);
+        db = firebase.database();
+        db.ref('settings/download_page').on('value', snap=>{
+            applyDownloadSettings(snap.val());
+        }, ()=>{ /* لو فشل، يفضل الافتراضي */ });
+    } catch(e){
+        console.warn('Firebase init failed, using defaults', e);
+    }
+}
+
+/* ═══════════════════════════════════════════
+   Init
+   ═══════════════════════════════════════════ */
 function init(){
     $id('year').innerText = new Date().getFullYear();
     initParticles();
     initReveal();
-    loadSocialSettings();
-    loadScreenshots();
+    renderScreenshots(SCREENSHOTS);
 
-    setTimeout(() => {
-        $id('loaderOverlay').classList.add('hide');
-    }, 900);
+    /* انتظر تحميل سكربتات Firebase (defer) */
+    if(typeof firebase !== 'undefined'){
+        initFirebase();
+    } else {
+        window.addEventListener('load', ()=>{
+            if(typeof firebase !== 'undefined') initFirebase();
+        });
+    }
+
+    setTimeout(()=> $id('loaderOverlay').classList.add('hide'), 900);
 }
 
 if(document.readyState === 'loading'){
