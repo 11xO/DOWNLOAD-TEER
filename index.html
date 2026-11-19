@@ -143,6 +143,132 @@ body{
     box-shadow:0 10px 20px rgba(16,185,129,.4);
 }
 
+/* ===== Screenshots Section ===== */
+.screenshots-section{
+    padding:60px 20px 40px;
+    position:relative;z-index:1;
+}
+.screenshots-title{
+    font-size:clamp(1.8rem,4vw,2.5rem);
+    font-weight:900;text-align:center;
+    margin-bottom:12px;
+    background:linear-gradient(90deg,#8b5cf6,#06b6d4);
+    -webkit-background-clip:text;background-clip:text;
+    color:transparent;
+}
+.screenshots-sub{
+    text-align:center;color:var(--text-muted);
+    font-size:1rem;margin-bottom:40px;
+    max-width:500px;margin-left:auto;margin-right:auto;
+    line-height:1.7;
+}
+.screenshots-slider{
+    display:flex;gap:20px;
+    overflow-x:auto;
+    padding:20px 10px 30px;
+    scroll-snap-type:x mandatory;
+    scrollbar-width:thin;
+    scrollbar-color:#8b5cf6 transparent;
+    max-width:100%;
+}
+.screenshots-slider::-webkit-scrollbar{height:8px}
+.screenshots-slider::-webkit-scrollbar-track{
+    background:rgba(255,255,255,.05);
+    border-radius:10px;
+}
+.screenshots-slider::-webkit-scrollbar-thumb{
+    background:linear-gradient(90deg,#8b5cf6,#06b6d4);
+    border-radius:10px;
+}
+
+.screenshot-item{
+    flex-shrink:0;
+    width:260px;
+    height:540px;
+    background:#0f172a;
+    border-radius:36px;
+    border:8px solid #1e293b;
+    position:relative;
+    overflow:hidden;
+    scroll-snap-align:center;
+    box-shadow:0 25px 60px rgba(0,0,0,.5),
+               0 0 0 2px rgba(139,92,246,.2);
+    transition:transform .4s ease,box-shadow .4s ease;
+}
+.screenshot-item:hover{
+    transform:translateY(-10px) scale(1.03);
+    box-shadow:0 35px 80px rgba(139,92,246,.5),
+               0 0 0 2px rgba(139,92,246,.5);
+}
+.screenshot-item::before{
+    content:'';
+    position:absolute;top:0;left:50%;
+    transform:translateX(-50%);
+    width:120px;height:24px;
+    background:#0f172a;
+    border-radius:0 0 16px 16px;
+    z-index:3;
+}
+.screenshot-item img{
+    width:100%;height:100%;
+    object-fit:cover;
+    object-position:top;
+    border-radius:28px;
+    display:block;
+}
+.screenshot-placeholder{
+    width:100%;height:100%;
+    display:flex;flex-direction:column;
+    align-items:center;justify-content:center;
+    background:linear-gradient(180deg,#1a1f36,#0f172a);
+    padding:20px;text-align:center;
+    border-radius:28px;
+}
+.screenshot-placeholder i{
+    font-size:60px;
+    color:rgba(139,92,246,.3);
+    margin-bottom:16px;
+}
+.screenshot-placeholder p{
+    font-size:13px;
+    color:var(--text-muted);
+    line-height:1.6;
+}
+.screenshot-label{
+    position:absolute;
+    bottom:20px;left:50%;
+    transform:translateX(-50%);
+    background:rgba(139,92,246,.9);
+    color:#fff;
+    padding:6px 18px;
+    border-radius:20px;
+    font-size:11.5px;
+    font-weight:900;
+    backdrop-filter:blur(10px);
+    white-space:nowrap;
+    z-index:4;
+}
+
+/* Dots */
+.screenshot-dots{
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    margin-top:16px;
+}
+.screenshot-dots .dot{
+    width:8px;height:8px;
+    border-radius:50%;
+    background:rgba(255,255,255,.2);
+    transition:all .3s;
+    cursor:pointer;
+}
+.screenshot-dots .dot.active{
+    background:linear-gradient(135deg,#8b5cf6,#06b6d4);
+    width:24px;
+    border-radius:10px;
+}
+
 /* ===== Footer ===== */
 .footer{
     text-align:center;padding:40px 20px;color:var(--text-muted);
@@ -200,6 +326,8 @@ body{
     .hero{padding:20px 15px;min-height:80vh}
     .dl-btn{min-width:160px;padding:14px 20px;font-size:.95rem}
     .phone-mockup{width:230px;height:460px}
+    .screenshot-item{width:220px;height:460px;border-width:6px}
+    .screenshots-section{padding:40px 15px 30px}
 }
 
 /* ===== أنيميشن الظهور ===== */
@@ -289,6 +417,20 @@ body{
                 <div class="phone-screen-badge">✓ نسخة جديدة</div>
             </div>
         </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- لقطات من داخل التطبيق -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <section class="screenshots-section">
+        <h2 class="screenshots-title reveal">لقطات من داخل التطبيق</h2>
+        <p class="screenshots-sub reveal">شوف شكل التطبيق من جوه — تجربة سهلة وسريعة</p>
+
+        <div class="screenshots-slider reveal" id="screenshotsSlider">
+            <!-- الصور هتتولد تلقائياً من GitHub -->
+        </div>
+
+        <div class="screenshot-dots" id="screenshotDots"></div>
     </section>
 
 </div>
@@ -479,6 +621,74 @@ function normalizePhone(num){
     return digits;
 }
 
+// ═══════════════════════════════════════════
+// ⬇️⬇️ هنا بتعدل أسماء الأماكن تحت الصور ⬇️⬇️
+// ═══════════════════════════════════════════
+const SCREENSHOTS = [
+    { url: '1.png', label: 'الصفحة الرئيسية' },
+    { url: '2.png', label: 'السوبر ماركت' },
+    { url: '3.png', label: 'المطاعم' }, 
+    
+    // لو عايز تضيف صورة رابعة (4.png) شيل علامتين الـ // من السطر اللي تحت ده:
+    // { url: '4.png', label: 'اسم المكان الرابع' }
+];
+
+function loadScreenshots(){
+    renderScreenshots(SCREENSHOTS);
+}
+
+function renderScreenshots(screenshots){
+    const slider = $id('screenshotsSlider');
+    const dots = $id('screenshotDots');
+    if(!slider || !dots) return;
+
+    if(screenshots.length === 0){
+        slider.innerHTML = '<div class="screenshot-placeholder"><i class="fas fa-images"></i><p>مفيش صور بعد</p></div>';
+        dots.innerHTML = '';
+        return;
+    }
+
+    let html = '';
+    screenshots.forEach((s, i) => {
+        html += `
+            <div class="screenshot-item">
+                <img src="${s.url}" alt="${s.label || 'لقطة ' + (i+1)}" loading="lazy"
+                     onerror="this.style.display='none';this.parentElement.innerHTML='<div class=screenshot-placeholder><i class=fas\\ fa-exclamation-triangle></i><p>الصورة مش محملة</p></div>';">
+                ${s.label ? `<div class="screenshot-label">${s.label}</div>` : ''}
+            </div>
+        `;
+    });
+    slider.innerHTML = html;
+
+    let dotsHtml = '';
+    screenshots.forEach((s, i) => {
+        dotsHtml += `<span class="dot ${i===0?'active':''}" onclick="scrollToScreenshot(${i})"></span>`;
+    });
+    dots.innerHTML = dotsHtml;
+
+    slider.addEventListener('scroll', () => {
+        const scrollLeft = slider.scrollLeft;
+        const itemWidth = slider.querySelector('.screenshot-item')?.offsetWidth || 260;
+        const gap = 20;
+        const index = Math.round(scrollLeft / (itemWidth + gap));
+        document.querySelectorAll('.screenshot-dots .dot').forEach((d, i) => {
+            d.classList.toggle('active', i === index);
+        });
+    });
+}
+
+function scrollToScreenshot(index){
+    const slider = $id('screenshotsSlider');
+    if(!slider) return;
+    const items = slider.querySelectorAll('.screenshot-item');
+    if(items[index]){
+        items[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
+}
+
+// ═══════════════════════════════════════════
+// Particles
+// ═══════════════════════════════════════════
 function initParticles(){
     const container = $id('particles');
     if(!container) return;
@@ -500,6 +710,9 @@ function initParticles(){
     }
 }
 
+// ═══════════════════════════════════════════
+// Reveal
+// ═══════════════════════════════════════════
 function initReveal(){
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -513,11 +726,15 @@ function initReveal(){
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 }
 
+// ═══════════════════════════════════════════
+// Init
+// ═══════════════════════════════════════════
 function init(){
     $id('year').innerText = new Date().getFullYear();
     initParticles();
     initReveal();
     loadSettings();
+    loadScreenshots();
 
     setTimeout(() => {
         $id('loaderOverlay').classList.add('hide');
