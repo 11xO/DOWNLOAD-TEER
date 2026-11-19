@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>تحميل تطبيق مشوارك | Meshwark</title>
 <meta name="theme-color" content="#8b5cf6">
-<meta name="description" content="حمّل تطبيق مشوارك الآن — أسرع توصيل في منطقتك. متاح للأندرويد والأيفون.">
+<meta name="description" content="حمّل تطبيق مشوارك الآن — أسرع توصيل في منطقتك. متاح للأندرويد.">
 <meta property="og:title" content="تحميل تطبيق مشوارك">
-<meta property="og:description" content="حمّل تطبيق مشوارك الآن — أسرع توصيل في منطقتك">
+<meta property="og:description" content="حمّل تطبيق مشوارك الآن">
 <meta property="og:image" content="../logo.png">
 <link rel="icon" type="image/png" href="../logo.png">
 <link rel="apple-touch-icon" href="../logo.png">
@@ -29,7 +29,6 @@ body{
     color:var(--text-main);min-height:100vh;overflow-x:hidden;position:relative;
 }
 
-/* ===== خلفية متحركة ===== */
 .bg-particles{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
 .particle{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(139,92,246,.6),transparent 70%);animation:floatParticle linear infinite}
 @keyframes floatParticle{
@@ -39,10 +38,8 @@ body{
     100%{transform:translateY(-100px) scale(1);opacity:0}
 }
 
-/* ===== الحاوية الرئيسية ===== */
 .main-container{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:20px}
 
-/* ===== Hero ===== */
 .hero{
     min-height:85vh;display:flex;flex-direction:column;align-items:center;
     justify-content:center;text-align:center;padding:30px 20px;position:relative;
@@ -72,7 +69,6 @@ body{
     max-width:600px;line-height:1.8;margin-bottom:40px;
 }
 
-/* ===== أزرار التحميل ===== */
 .download-buttons{
     display:flex;gap:16px;flex-wrap:wrap;justify-content:center;
     margin-bottom:30px;
@@ -109,7 +105,6 @@ body{
 .dl-btn-text small{font-size:.7rem;font-weight:600;opacity:.85}
 .dl-btn-text strong{font-size:1rem}
 
-/* ===== الموبايل موك أب ===== */
 .phone-mockup{
     width:280px;height:560px;background:#0f172a;border-radius:40px;
     border:8px solid #1e293b;position:relative;margin:30px auto;
@@ -143,7 +138,6 @@ body{
     box-shadow:0 10px 20px rgba(16,185,129,.4);
 }
 
-/* ===== Screenshots Section ===== */
 .screenshots-section{
     padding:60px 20px 40px;
     position:relative;z-index:1;
@@ -249,7 +243,6 @@ body{
     z-index:4;
 }
 
-/* Dots */
 .screenshot-dots{
     display:flex;
     justify-content:center;
@@ -269,7 +262,6 @@ body{
     border-radius:10px;
 }
 
-/* ===== Footer ===== */
 .footer{
     text-align:center;padding:40px 20px;color:var(--text-muted);
     font-size:.85rem;border-top:1px solid var(--glass-border);
@@ -288,7 +280,6 @@ body{
 .footer-social a.fb:hover{background:#1877F2;border-color:#1877F2}
 .footer-social a.app:hover{background:var(--primary);border-color:var(--primary)}
 
-/* ===== Loader ===== */
 .loader-overlay{
     position:fixed;inset:0;background:#090d16;z-index:9999;
     display:flex;flex-direction:column;align-items:center;justify-content:center;
@@ -306,7 +297,6 @@ body{
 @keyframes loaderPulse{0%,100%{transform:scale(1);box-shadow:0 0 40px rgba(139,92,246,.6)}50%{transform:scale(1.1);box-shadow:0 0 80px rgba(139,92,246,.9)}}
 .loader-text{color:#a78bfa;font-weight:900;font-size:1.1rem}
 
-/* ===== Toast ===== */
 .toast{
     position:fixed;bottom:30px;left:50%;
     transform:translateX(-50%) translateY(150px);
@@ -321,7 +311,6 @@ body{
 .toast.success{border-color:var(--success)}
 .toast.error{border-color:var(--danger)}
 
-/* ===== Responsive ===== */
 @media(max-width:600px){
     .hero{padding:20px 15px;min-height:80vh}
     .dl-btn{min-width:160px;padding:14px 20px;font-size:.95rem}
@@ -330,7 +319,6 @@ body{
     .screenshots-section{padding:40px 15px 30px}
 }
 
-/* ===== أنيميشن الظهور ===== */
 .reveal{opacity:0;transform:translateY(40px);transition:all .8s cubic-bezier(.16,1,.3,1)}
 .reveal.show{opacity:1;transform:translateY(0)}
 </style>
@@ -345,7 +333,6 @@ body{
     <div class="loader-text">جاري التحميل...</div>
 </div>
 
-<!-- Background Particles -->
 <div class="bg-particles" id="particles"></div>
 
 <div class="main-container">
@@ -361,7 +348,8 @@ body{
         </p>
 
         <div class="download-buttons reveal">
-            <a href="#" id="btnAndroid" class="dl-btn dl-btn-android">
+            <!-- زرار الأندرويد بيقرأ الملف المرفوع -->
+            <a href="../meshwark.zip" download class="dl-btn dl-btn-android">
                 <i class="fab fa-android dl-btn-icon"></i>
                 <div class="dl-btn-text">
                     <small>حمّل الآن</small>
@@ -369,7 +357,8 @@ body{
                 </div>
             </a>
 
-            <a href="#" id="btnIOS" class="dl-btn dl-btn-ios">
+            <!-- زرار الأيفون -->
+            <a href="javascript:void(0)" onclick="showToast('📱 تطبيق الأيفون قريباً — تابعنا على فيسبوك')" class="dl-btn dl-btn-ios">
                 <i class="fab fa-apple dl-btn-icon"></i>
                 <div class="dl-btn-text">
                     <small>حمّل الآن</small>
@@ -377,7 +366,8 @@ body{
                 </div>
             </a>
 
-            <a href="#" id="btnOpenApp" class="dl-btn dl-btn-open">
+            <!-- زرار فتح التطبيق -->
+            <a href="https://11xo.github.io/Meshwark/" target="_blank" class="dl-btn dl-btn-open">
                 <i class="fas fa-external-link-alt dl-btn-icon"></i>
                 <div class="dl-btn-text">
                     <small>افتح مباشرة</small>
@@ -388,7 +378,7 @@ body{
 
         <!-- Social Buttons -->
         <div class="download-buttons reveal">
-            <a href="#" id="btnWhatsapp" class="dl-btn dl-btn-whatsapp" target="_blank">
+            <a href="https://wa.me/201115699940" id="btnWhatsapp" target="_blank" class="dl-btn dl-btn-whatsapp">
                 <i class="fab fa-whatsapp dl-btn-icon"></i>
                 <div class="dl-btn-text">
                     <small>تواصل معنا</small>
@@ -396,7 +386,7 @@ body{
                 </div>
             </a>
 
-            <a href="#" id="btnFacebook" class="dl-btn dl-btn-facebook" target="_blank">
+            <a href="#" id="btnFacebook" target="_blank" class="dl-btn dl-btn-facebook">
                 <i class="fab fa-facebook-f dl-btn-icon"></i>
                 <div class="dl-btn-text">
                     <small>تابعنا</small>
@@ -419,9 +409,7 @@ body{
         </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════ -->
     <!-- لقطات من داخل التطبيق -->
-    <!-- ═══════════════════════════════════════════════ -->
     <section class="screenshots-section">
         <h2 class="screenshots-title reveal">لقطات من داخل التطبيق</h2>
         <p class="screenshots-sub reveal">شوف شكل التطبيق من جوه — تجربة سهلة وسريعة</p>
@@ -438,9 +426,9 @@ body{
 <!-- Footer -->
 <footer class="footer">
     <div class="footer-social">
-        <a href="#" id="footWhatsapp" class="wa" target="_blank" title="واتساب"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://wa.me/201115699940" class="wa" target="_blank" title="واتساب"><i class="fab fa-whatsapp"></i></a>
         <a href="#" id="footFacebook" class="fb" target="_blank" title="فيسبوك"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" id="footApp" class="app" target="_blank" title="افتح التطبيق"><i class="fas fa-mobile-alt"></i></a>
+        <a href="https://11xo.github.io/Meshwark/" class="app" target="_blank" title="افتح التطبيق"><i class="fas fa-mobile-alt"></i></a>
     </div>
     <div>© <span id="year"></span> مشوارك — كل الحقوق محفوظة</div>
 </footer>
@@ -459,23 +447,6 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 
-// ⚠️ هنا تم تعديل الروابط لتقرأ من الفولدر الرئيسي (بره download)
-const DEFAULTS = {
-    apkUrl: '../meshwark.apk', // ملف الأندرويد في الفولدر الرئيسي
-    appStoreUrl: '',           // سيبه فاضي لحد ما يبقى عندك رابط App Store أو TestFlight
-    pwaUrl: 'https://11xo.github.io/Meshwark/', // رابط تطبيق الويب
-    showAndroid: true,
-    showIOS: true,
-    showOpenApp: true,
-    showWhatsapp: true,
-    showFacebook: true,
-    supportWhatsapp: '01115699940',
-    facebookUrl: ''
-};
-
-let settings = { ...DEFAULTS };
-let socialSettings = { whatsappEnabled: true, whatsappNumber: '', facebookEnabled: true, facebookUrl: '' };
-
 function $id(id){ return document.getElementById(id); }
 
 let toastTimer;
@@ -489,127 +460,27 @@ function showToast(msg, type='info'){
     toastTimer = setTimeout(()=>t.classList.remove('show'), 3500);
 }
 
-function loadSettings(){
-    db.ref('settings/download_page').on('value', snap=>{
-        const v = snap.val();
-        if(v){
-            settings = { ...DEFAULTS, ...v };
-        }
-        applySettings();
-    }, err => {
-        console.error('Load settings error:', err);
-        applySettings();
-    });
-
+// ═══════════════════════════════════════════
+// جلب رابط الفيسبوك من لوحة الأدمن تلقائياً
+// ═══════════════════════════════════════════
+function loadSocialSettings(){
     db.ref('settings/social').on('value', snap=>{
         const v = snap.val() || {};
-        socialSettings = {
-            whatsappEnabled: v.whatsappEnabled !== false,
-            whatsappNumber: v.whatsappNumber || '',
-            facebookEnabled: v.facebookEnabled !== false,
-            facebookUrl: v.facebookUrl || ''
-        };
-        applySettings();
+        const fbUrl = v.facebookUrl || '';
+        const showFb = v.facebookEnabled !== false && /^https?:\/\//.test(fbUrl);
+        
+        const btnFacebook = $id('btnFacebook');
+        const footFacebook = $id('footFacebook');
+        
+        if(btnFacebook){
+            btnFacebook.style.display = showFb ? 'flex' : 'none';
+            if(showFb) btnFacebook.href = fbUrl;
+        }
+        if(footFacebook){
+            footFacebook.style.display = showFb ? 'flex' : 'none';
+            if(showFb) footFacebook.href = fbUrl;
+        }
     });
-
-    db.ref('settings/support/whatsapp').on('value', snap=>{
-        const num = snap.val();
-        if(num) settings.supportWhatsapp = num;
-        applySettings();
-    });
-}
-
-function applySettings(){
-    const btnAndroid = $id('btnAndroid');
-    if(btnAndroid){
-        if(settings.showAndroid !== false && settings.apkUrl){
-            btnAndroid.style.display = 'flex';
-            btnAndroid.href = settings.apkUrl;
-            btnAndroid.setAttribute('download', '');
-        } else {
-            btnAndroid.style.display = 'none';
-        }
-    }
-
-    const btnIOS = $id('btnIOS');
-    if(btnIOS){
-        if(settings.showIOS !== false){
-            btnIOS.style.display = 'flex';
-            if(settings.appStoreUrl && /^https?:\/\//.test(settings.appStoreUrl)){
-                btnIOS.href = settings.appStoreUrl;
-                btnIOS.target = '_blank';
-                btnIOS.onclick = null;
-            } else {
-                btnIOS.href = 'javascript:void(0)';
-                btnIOS.onclick = (e) => {
-                    e.preventDefault();
-                    showToast('📱 تطبيق الأيفون قريباً — تابعنا على فيسبوك', 'info');
-                };
-            }
-        } else {
-            btnIOS.style.display = 'none';
-        }
-    }
-
-    const btnOpenApp = $id('btnOpenApp');
-    if(btnOpenApp){
-        if(settings.showOpenApp !== false && settings.pwaUrl){
-            btnOpenApp.style.display = 'flex';
-            btnOpenApp.href = settings.pwaUrl;
-            btnOpenApp.target = '_blank';
-        } else {
-            btnOpenApp.style.display = 'none';
-        }
-    }
-
-    const btnWhatsapp = $id('btnWhatsapp');
-    const footWhatsapp = $id('footWhatsapp');
-    let waNum = socialSettings.whatsappNumber || settings.supportWhatsapp || '';
-    waNum = normalizePhone(waNum);
-    const showWa = settings.showWhatsapp !== false && socialSettings.whatsappEnabled !== false && waNum;
-    if(btnWhatsapp){
-        if(showWa){
-            btnWhatsapp.style.display = 'flex';
-            btnWhatsapp.href = `https://wa.me/${waNum}`;
-        } else {
-            btnWhatsapp.style.display = 'none';
-        }
-    }
-    if(footWhatsapp){
-        footWhatsapp.style.display = showWa ? 'flex' : 'none';
-        if(showWa) footWhatsapp.href = `https://wa.me/${waNum}`;
-    }
-
-    const btnFacebook = $id('btnFacebook');
-    const footFacebook = $id('footFacebook');
-    const fbUrl = socialSettings.facebookUrl || settings.facebookUrl || '';
-    const showFb = settings.showFacebook !== false && socialSettings.facebookEnabled !== false && /^https?:\/\//.test(fbUrl);
-    if(btnFacebook){
-        if(showFb){
-            btnFacebook.style.display = 'flex';
-            btnFacebook.href = fbUrl;
-        } else {
-            btnFacebook.style.display = 'none';
-        }
-    }
-    if(footFacebook){
-        footFacebook.style.display = showFb ? 'flex' : 'none';
-        if(showFb) footFacebook.href = fbUrl;
-    }
-
-    const footApp = $id('footApp');
-    if(footApp && settings.pwaUrl){
-        footApp.href = settings.pwaUrl;
-    }
-}
-
-function normalizePhone(num){
-    if(!num) return '';
-    let digits = String(num).replace(/\D/g,'');
-    if(!digits) return '';
-    if(digits.startsWith('0')) digits = '2' + digits;
-    else if(!digits.startsWith('20')) digits = '20' + digits;
-    return digits;
 }
 
 // ═══════════════════════════════════════════
@@ -724,7 +595,7 @@ function init(){
     $id('year').innerText = new Date().getFullYear();
     initParticles();
     initReveal();
-    loadSettings();
+    loadSocialSettings();
     loadScreenshots();
 
     setTimeout(() => {
